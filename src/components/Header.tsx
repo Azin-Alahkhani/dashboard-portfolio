@@ -19,7 +19,7 @@ export function Header() {
         <button
           title="Toggle Dark Mode"
           onClick={() => setDark((prev) => !prev)}
-          className="p-2 rounded-full hover:bg-gray-700 dark:hover:bg-gray-700"
+          className="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700"
         >
           {dark ? <Sun /> : <Moon />}
         </button>
