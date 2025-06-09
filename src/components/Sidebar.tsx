@@ -18,7 +18,7 @@ export function Sidebar() {
   const navItems = [
     { name: "Dashboard", path: "/", icon: <Home /> },
     { name: "Analytics", path: "/analytics", icon: <BarChart /> },
-    { name: "Users", path: "/users", icon: <Users /> },
+    { name: "Influencers", path: "/users", icon: <Users /> },
     { name: "Settings", path: "/settings", icon: <Settings /> },
   ];
 
