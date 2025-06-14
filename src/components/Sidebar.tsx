@@ -95,7 +95,9 @@ export function Sidebar({
               )}
             >
               <span className="text-xl">{item.icon}</span>
-              {!isCollapsed && <span>{item.name}</span>}
+              {(!isCollapsed || (isMobile && isMobileMenuOpen)) && (
+                <span>{item.name}</span>
+              )}
             </Link>
           ))}
         </nav>
