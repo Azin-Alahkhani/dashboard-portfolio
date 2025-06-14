@@ -1,8 +1,14 @@
 // components/Header.tsx
-import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Menu, Moon, Sun } from "lucide-react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-export function Header() {
+export function Header({
+  setIsCollapsed,
+  isMobile,
+}: {
+  setIsCollapsed: Dispatch<SetStateAction<boolean>>;
+  isMobile: boolean;
+}) {
   const [dark, setDark] = useState(
     () => localStorage.getItem("theme") === "dark"
   );
@@ -14,6 +20,19 @@ export function Header() {
 
   return (
     <header className="flex justify-between items-center px-6 py-4 border-b bg-white dark:bg-gray-800">
+      {isMobile && (
+        // Mobile hamburger header
+        <div className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between bg-white dark:bg-gray-800 border-b dark:border-gray-700 px-4 py-3">
+          <button
+            onClick={() => setIsCollapsed((prev: any) => !prev)}
+            className="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700"
+            aria-label="Toggle menu"
+          >
+            <Menu />
+          </button>
+          <div />
+        </div>
+      )}
       <h1 className="text-xl font-semibold">Dashboard</h1>
       <div className="flex items-center gap-4">
         <button
