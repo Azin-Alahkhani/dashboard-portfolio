@@ -3,8 +3,8 @@ import { useState } from "react";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("sampleuser");
+  const [password, setPassword] = useState("password123");
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -13,7 +13,7 @@ export default function Login() {
     localStorage.setItem("auth", "true");
 
     // Redirect
-    navigate("/");
+    navigate("/dashboard");
   }
 
   return (

@@ -26,7 +26,7 @@ export default function Influencers() {
           <select
             value={platformFilter}
             onChange={(e) => setPlatformFilter(e.target.value)}
-            className="border rounded p-2"
+            className="border rounded p-2 dark:bg-gray-800 dark:text-white"
           >
             <option>All</option>
             <option>Instagram</option>
@@ -37,7 +37,7 @@ export default function Influencers() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="border rounded p-2"
+            className="border rounded p-2 dark:bg-gray-800 dark:text-white"
           >
             <option>All</option>
             <option>Contacted</option>
@@ -50,7 +50,7 @@ export default function Influencers() {
             placeholder="Search username..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="border rounded p-2"
+            className="border rounded p-2 dark:bg-gray-800 dark:text-white flex-1"
           />
         </div>
 

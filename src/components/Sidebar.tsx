@@ -23,7 +23,7 @@ export function Sidebar({
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const navItems = [
-    { name: "Dashboard", path: "/", icon: <Home /> },
+    { name: "Dashboard", path: "/dashboard", icon: <Home /> },
     { name: "Analytics", path: "/analytics", icon: <BarChart /> },
     { name: "Influencers", path: "/users", icon: <Users /> },
     { name: "Settings", path: "/settings", icon: <Settings /> },
