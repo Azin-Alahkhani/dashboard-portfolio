@@ -26,7 +26,7 @@ export function Sidebar({
     { name: "Dashboard", path: "/dashboard", icon: <Home /> },
     { name: "Analytics", path: "/analytics", icon: <BarChart /> },
     { name: "Influencers", path: "/users", icon: <Users /> },
-    { name: "Settings", path: "/settings", icon: <Settings /> },
+    { name: "Settings", path: "/account-settings", icon: <Settings /> },
   ];
 
   // When screen switches from mobile to desktop, close mobile menu
