@@ -3,6 +3,7 @@ import { Menu, Moon, Sun } from "lucide-react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Avatar from "boring-avatars";
 import { Link } from "react-router-dom";
+import { useUserStore } from "../store/useUserStore";
 
 export function Header({
   setIsCollapsed,
@@ -14,6 +15,7 @@ export function Header({
   const [dark, setDark] = useState(
     () => localStorage.getItem("theme") === "dark"
   );
+  const { name } = useUserStore();
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -42,13 +44,13 @@ export function Header({
             </button>
 
             <Link
-              title="User Profile"
+              title={`User Profile: ${name}`}
               to="/account-settings"
               className="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700"
             >
               <Avatar
                 size={32}
-                name="Richard Gansey"
+                name={name}
                 variant="beam"
                 colors={["#FFDDC1", "#FCA5A5", "#FCD34D", "#A7F3D0", "#93C5FD"]}
               />
@@ -67,13 +69,13 @@ export function Header({
           {dark ? <Sun /> : <Moon />}
         </button>
         <Link
-          title="User Profile"
+          title={`User Profile: ${name}`}
           to="/account-settings"
           className="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700"
         >
           <Avatar
             size={32}
-            name="Richard Gansey"
+            name={name}
             variant="beam"
             colors={["#FFDDC1", "#FCA5A5", "#FCD34D", "#A7F3D0", "#93C5FD"]}
           />

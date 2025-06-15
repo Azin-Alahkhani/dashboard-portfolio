@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import { useUserStore } from "../store/useUserStore";
 import { useState } from "react";
 import Avatar from "boring-avatars";
+import { ne } from "@faker-js/faker/.";
 
 export function AccountSettings() {
   const {
@@ -15,9 +16,13 @@ export function AccountSettings() {
   } = useUserStore();
 
   const [saved, setSaved] = useState(false);
+  const [newUserName, setNewUserName] = useState(name);
+  const [newEmail, setNewEmail] = useState(email);
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const saveChanges = () => {
     setSaved(true);
+    setUser({ name: newUserName, email: newEmail, avatar });
     setTimeout(() => setSaved(false), 2000);
   };
 
@@ -52,14 +57,14 @@ export function AccountSettings() {
               <input
                 className="w-full rounded border px-4 py-2 dark:bg-gray-700"
                 type="text"
-                value={name}
-                onChange={(e) => setUser({ name: e.target.value })}
+                value={newUserName}
+                onChange={(e) => setNewUserName(e.target.value)}
               />
               <input
                 className="w-full rounded border px-4 py-2 dark:bg-gray-700"
                 type="email"
-                value={email}
-                onChange={(e) => setUser({ email: e.target.value })}
+                value={newEmail}
+                onChange={(e) => setNewEmail(e.target.value)}
               />
             </div>
           </div>
