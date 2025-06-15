@@ -6,7 +6,7 @@ import Influencerss from "./pages/Influencers";
 import Settings from "./pages/Setting";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
-import Layout from "./components/Layout";
+import { AccountSettings } from "./pages/AccountSettings";
 
 function App() {
   return (
@@ -22,6 +22,15 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route
+          path="/account-settings"
+          element={
+            <PrivateRoute>
+              <AccountSettings />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path="/analytics"
           element={

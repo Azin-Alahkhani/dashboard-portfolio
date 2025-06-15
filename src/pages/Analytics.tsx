@@ -17,10 +17,21 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import { useUserStore } from "../store/useUserStore";
+import { useMemo } from "react";
 
 const COLORS = ["#f87171", "#60a5fa", "#34d399", "#fbbf24"]; // red, blue, green, yellow
 
 export default function Analytics() {
+  const rawAccounts = useUserStore((state) => state.linkedAccounts);
+  const linkedAccs = useMemo(() => {
+    return Object.fromEntries(
+      Object.entries(rawAccounts).filter(([_, value]) => value !== null)
+    );
+  }, [rawAccounts]);
+
+  const platforms = Object.keys(linkedAccs);
+
   return (
     <Layout>
       <div className="space-y-6 p-6">
@@ -99,12 +110,14 @@ export default function Analytics() {
                 outerRadius={80}
                 label
               >
-                {engagementByPlatform.map((_entry: any, index: number) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
+                {engagementByPlatform
+                  .filter((kpi) => platforms.includes(kpi.platform))
+                  .map((_entry: any, index: number) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
               </Pie>
               <Tooltip />
             </PieChart>

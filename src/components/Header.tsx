@@ -2,6 +2,7 @@
 import { Menu, Moon, Sun } from "lucide-react";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Avatar from "boring-avatars";
+import { Link } from "react-router-dom";
 
 export function Header({
   setIsCollapsed,
@@ -39,8 +40,10 @@ export function Header({
             >
               {dark ? <Sun /> : <Moon />}
             </button>
-            <button
+
+            <Link
               title="User Profile"
+              to="/account-settings"
               className="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700"
             >
               <Avatar
@@ -49,7 +52,7 @@ export function Header({
                 variant="beam"
                 colors={["#FFDDC1", "#FCA5A5", "#FCD34D", "#A7F3D0", "#93C5FD"]}
               />
-            </button>
+            </Link>
           </div>
           <div />
         </div>
@@ -63,8 +66,9 @@ export function Header({
         >
           {dark ? <Sun /> : <Moon />}
         </button>
-        <button
+        <Link
           title="User Profile"
+          to="/account-settings"
           className="p-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-700"
         >
           <Avatar
@@ -73,7 +77,7 @@ export function Header({
             variant="beam"
             colors={["#FFDDC1", "#FCA5A5", "#FCD34D", "#A7F3D0", "#93C5FD"]}
           />
-        </button>
+        </Link>
       </div>
     </header>
   );

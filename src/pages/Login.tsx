@@ -1,16 +1,25 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useUserStore } from "../store/useUserStore";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("sampleuser");
+  const [username, setUsername] = useState("JaneDoe");
   const [password, setPassword] = useState("password123");
+
+  const { name, email, setUser } = useUserStore();
 
   function handleLogin(e: React.FormEvent) {
     e.preventDefault();
 
     // Store fake auth flag
     localStorage.setItem("auth", "true");
+    // Store fake user data in zustand store
+    setUser({
+      name: username,
+      email: `${username.toLowerCase()}@example.com`,
+      avatar: `https://api.adorable.io/avatars/285/${username}.png`,
+    });
 
     // Redirect
     navigate("/dashboard");
